@@ -2054,6 +2054,7 @@ controls:
       - l1_workstation
     related_rules:
       - set_password_hashing_algorithm_logindefs
+      - var_password_hashing_algorithm=SHA512
     status: planned
     notes: TODO. Partial/incorrect implementation exists.See related rules. Analogous to ubuntu2204/5.4.4.
 
