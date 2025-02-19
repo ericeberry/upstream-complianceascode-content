@@ -1,8 +1,14 @@
+{{%- if product in ['ubuntu2404'] %}}
+{{%- set owner = 'root|syslog' %}}
+{{%- else %}}
+{{%- set owner = 'root' %}}
+{{%- endif %}}
+
 documentation_complete: true
 
 title: 'Verify User Who Owns /var/log Directory'
 
-description: '{{{ describe_file_owner(file="/var/log", owner="root") }}}'
+description: '{{{ describe_file_owner(file="/var/log", owner=owner) }}}'
 
 rationale: |-
     The <tt>/var/log</tt> directory contains files with logs of error
@@ -25,18 +31,20 @@ references:
     stigid@ubuntu2004: UBTU-20-010418
     stigid@ubuntu2204: UBTU-22-232120
 
-ocil_clause: '{{{ ocil_clause_file_owner(file="/var/log", owner="root") }}}'
+ocil_clause: '{{{ ocil_clause_file_owner(file="/var/log", owner=owner) }}}'
 
 ocil: |-
-    {{{ ocil_file_owner(file="/var/log", owner="root") }}}
+    {{{ ocil_file_owner(file="/var/log", owner=owner) }}}
 
+{{%- if product not in ['ubuntu2404'] %}}
 template:
     name: file_owner
     vars:
         filepath: /var/log/
         fileuid: '0'
+{{%- endif %}}
 
 fixtext: |-
-   {{{ describe_file_owner(file="/var/log", owner="root") }}}
+   {{{ describe_file_owner(file="/var/log", owner=owner) }}}
 
-srg_requirement: '{{{ srg_requirement_directory_owner("/var/log", owner="root") }}}'
+srg_requirement: '{{{ srg_requirement_directory_owner("/var/log", owner=owner) }}}'

@@ -2476,7 +2476,7 @@ controls:
       - file_permissions_var_log_waagent
       - file_permissions_var_log_wbtmp
       - file_groupowner_var_log
-      - owner_local_var_log
+      - file_owner_var_log
       - permissions_local_var_log
     status: automated
 
